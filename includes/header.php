@@ -81,6 +81,8 @@
       <a href="/INVENKAS/pinjam/index.php">Peminjaman</a>
       <div class="section">Laporan</div>
       <a href="/INVENKAS/laporan/peminjaman.php">Laporan Peminjaman</a>
+      <div class="section">Akun</div>
+      <a href="/INVENKAS/logout.php">Keluar</a>
     </nav>
   </aside>
   <main class="content container">
