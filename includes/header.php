@@ -55,6 +55,10 @@
  .sidebar .section{font-size:12px;text-transform:uppercase;color:#9ca3af;margin:12px 6px 6px}
  .content{flex:1;padding:16px}
 
+  /* Collapsed sidebar (desktop) */
+  body.sidebar-collapsed .sidebar{width:0;padding:0;overflow:hidden}
+  body.sidebar-collapsed .content{padding:16px}
+
  /* Mobile behavior */
  .sidebar-toggle{background:transparent;border:0;color:#fff;font-size:20px;cursor:pointer;padding:6px;border-radius:6px}
  .sidebar-toggle:focus{outline:2px solid #60a5fa}
@@ -68,7 +72,7 @@
 </head>
 <body>
 <header>
-  <button class="sidebar-toggle" aria-label="Toggle menu" onclick="document.body.classList.toggle('sidebar-open')">☰</button>
+  <button class="sidebar-toggle" aria-label="Toggle menu" onclick="toggleSidebar()">☰</button>
   <div class="brand">INVENKAS</div>
 </header>
 <div class="layout">
@@ -86,3 +90,22 @@
     </nav>
   </aside>
   <main class="content container">
+    <script>
+      function toggleSidebar(){
+        if (window.matchMedia('(max-width: 900px)').matches) {
+          document.body.classList.toggle('sidebar-open');
+        } else {
+          document.body.classList.toggle('sidebar-collapsed');
+        }
+      }
+      document.addEventListener('DOMContentLoaded', function(){
+        document.querySelectorAll('.sidebar nav a').forEach(function(a){
+          a.addEventListener('click', function(){
+            document.body.classList.remove('sidebar-open');
+          });
+        });
+        document.querySelector('main.content')?.addEventListener('click', function(){
+          document.body.classList.remove('sidebar-open');
+        });
+      });
+    </script>
